@@ -4,6 +4,9 @@ import { defineConfig, type PluginOption } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { visualizer } from 'rollup-plugin-visualizer'
+import Inspector from 'vite-plugin-vue-inspector'
+import VueDevTools from 'vite-plugin-vue-devtools';
+
 
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
@@ -15,6 +18,10 @@ import { viteMockServe } from 'vite-plugin-mock'
 const IS_PRODUCTION = process.env.NODE_ENV === 'production'
 
 const plugins: PluginOption[] = [
+  Inspector(),
+  VueDevTools({
+    launchEditor: 'webstorm',
+  }),
   vue(),
   vueJsx(),
   Components({
